@@ -194,6 +194,10 @@ Public Sub AsientosDH(Who As Object, oWizard As Object)
         
         Who.Table.Rows(1).Tables(msDebTb).Activate
         
+        
+        oRowI01.Fields("CJRMVI_NROCVT").ReadOnly = False
+        oRowI01.Fields("CJRMVI_NROCPV").ReadOnly = False
+        
         If msDebHab = "" Then
             If msHeadTb = "FCRMVH" Or msHeadTb = "VTRMVH" Then
                 AsignoValor Who, oRowI01.Fields("CJRMVI_NROCVT"), Who.Table.Rows(1).Fields(msHeadTb & "_NROCTA").Value, False
@@ -417,7 +421,7 @@ Public Sub AsientosDH(Who As Object, oWizard As Object)
                     oRowD01.Fields("CJRMVD_TOTIMP").Value = aSubcuentas(4, nIndice)
                     oRowD01.Fields("CJRMVD_CODDIM").Value = "RLRP"
                     oRowD01.Fields("CJRMVD_DIMDIS").Value = "RLRP"
-                    oRowD01.Fields("CJRMVD_CODDIS").Value = aSubcuentas(3, nIndice)
+'Comentado AF       oRowD01.Fields("CJRMVD_CODDIS").Value = aSubcuentas(3, nIndice)
                     oRowD01.Tables(msDebTbG).Rows(oRowD01.Tables(msDebTbG).Rows.Count).Fields("CJRMVG_CUENTA").Value = sCuenta
                     oRowD01.Tables(msDebTbG).Rows(oRowD01.Tables(msDebTbG).Rows.Count).Fields("CJRMVG_CODDIM").Value = "RLRP"
                     oRowD01.Tables(msDebTbG).Rows(oRowD01.Tables(msDebTbG).Rows.Count).Fields("CJRMVG_DIMSUB").Value = "RLRP"
@@ -474,6 +478,9 @@ Public Sub AsientosDH(Who As Object, oWizard As Object)
     For Each oRowI02 In Who.Table.Rows(1).Tables(msHabTb).Rows
 
         Who.Table.Rows(1).Tables(msHabTb).Activate
+        
+        oRowI02.Fields("CJRMVI_NROCVT").ReadOnly = False
+        oRowI02.Fields("CJRMVI_NROCPV").ReadOnly = False
         
         If msDebHab = "" Then
             If msHeadTb = "FCRMVH" Or msHeadTb = "VTRMVH" Then
@@ -697,7 +704,7 @@ Public Sub AsientosDH(Who As Object, oWizard As Object)
                     oRowD02.Fields("CJRMVD_TOTIMP").Value = aSubcuentas(4, nIndice)
                     oRowD02.Fields("CJRMVD_CODDIM").Value = "RLRP"
                     oRowD02.Fields("CJRMVD_DIMDIS").Value = "RLRP"
-                    oRowD02.Fields("CJRMVD_CODDIS").Value = aSubcuentas(3, nIndice)
+'Comentado AF       oRowD02.Fields("CJRMVD_CODDIS").Value = aSubcuentas(3, nIndice)
                     oRowD02.Tables(msHabTbG).Rows(oRowD02.Tables(msHabTbG).Rows.Count).Fields("CJRMVG_CUENTA").Value = sCuenta
                     oRowD02.Tables(msHabTbG).Rows(oRowD02.Tables(msHabTbG).Rows.Count).Fields("CJRMVG_CODDIM").Value = "RLRP"
                     oRowD02.Tables(msHabTbG).Rows(oRowD02.Tables(msHabTbG).Rows.Count).Fields("CJRMVG_DIMSUB").Value = "RLRP"
@@ -1879,4 +1886,6 @@ Private Function ExisteCampo(oFields As Object, sField As String) As Boolean
     Next
 
 End Function
+
+
 
